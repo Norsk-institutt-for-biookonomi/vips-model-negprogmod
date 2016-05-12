@@ -96,17 +96,18 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
             result.setValue(this.getModelId().toString(), DataMatrix.DAILY_CONTRIB_D, this.dataMatrix.getDefaultFormattedValueForDate(currentDate, DataMatrix.DAILY_CONTRIB_D));
             result.setValue(this.getModelId().toString(), DataMatrix.DAILY_CONTRIB, this.dataMatrix.getDefaultFormattedValueForDate(currentDate, DataMatrix.DAILY_CONTRIB));
             result.setValue(this.getModelId().toString(), DataMatrix.AGGREGATED_CONTRIB, this.dataMatrix.getDefaultFormattedValueForDate(currentDate, DataMatrix.AGGREGATED_CONTRIB));
+            result.setValue(this.getModelId().toString(), "INFECTION_THRESHOLD", String.valueOf(this.INFECTION_THRESHOLD));
             // Deciding warning status
             Double aggregatedContribution = this.dataMatrix.getParamDoubleValueForDate(currentDate, DataMatrix.AGGREGATED_CONTRIB);
             Double dailyContribution = this.dataMatrix.getParamDoubleValueForDate(currentDate, DataMatrix.DAILY_CONTRIB);
             Integer warningStatus = 2;
             // If aggregated contribution < INFECTION_THRESHOLD: NO RISK
-            if(aggregatedContribution <= this.INFECTION_THRESHOLD)
+            if(aggregatedContribution >= this.INFECTION_THRESHOLD)
             {
                 // If aggregated contribution >= INFECTION_THRESHOLD and daily contribution <= INFECTION_DAILY_CONTRIBUTION_THRESHOLD: MEDIUM RISK
                 warningStatus = 3;
                 // If aggregated contributin >= INFECTION_THRESHOLD and daily contribution > INFECTION_DAILY_CONTRIBUTION_THRESHOLD: HIGH RISK
-                if(dailyContribution >this.INFECTION_DAILY_CONTRIBUTION_THRESHOLD)
+                if(dailyContribution > this.INFECTION_DAILY_CONTRIBUTION_THRESHOLD)
                 {
                     warningStatus = 4;
                 }
