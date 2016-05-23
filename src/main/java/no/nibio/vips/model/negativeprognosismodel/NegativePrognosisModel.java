@@ -21,6 +21,7 @@ package no.nibio.vips.model.negativeprognosismodel;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,6 +36,7 @@ import no.nibio.vips.model.ConfigValidationException;
 import no.nibio.vips.model.Model;
 import no.nibio.vips.model.ModelExcecutionException;
 import no.nibio.vips.model.ModelId;
+import no.nibio.vips.util.ModelUtil;
 
 /**
  * @copyright 2016 <a href="http://www.nibio.no/">NIBIO</a>
@@ -43,6 +45,8 @@ import no.nibio.vips.model.ModelId;
 public class NegativePrognosisModel extends I18nImpl implements Model{
     
     private final static ModelId MODEL_ID = new ModelId("NEGPROGMOD");
+    
+    private ModelUtil modelUtil;
     
     private DataMatrix dataMatrix;
     private TimeZone timeZone;
@@ -72,6 +76,7 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
     {
         super("no.nibio.vips.model.negativeprognosismodel.texts");
         this.dataMatrix = new DataMatrix();
+        this.modelUtil = new ModelUtil();
     }
     
     @Override
@@ -170,7 +175,14 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
 
     @Override
     public String getModelDescription(String language) {
-        return this.getText("description", language);
+        try
+        {
+            return this.modelUtil.getTextWithBase64EncodedImages(this.getText("description", language), this.getClass());
+        }
+        catch(IOException ex)
+        {
+            return this.getText("description", language);
+        }
     }
 
     @Override
