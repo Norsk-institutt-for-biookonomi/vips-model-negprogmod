@@ -259,7 +259,11 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
         // Iterate the set of weather data
         Date currentTime = this.dataMatrix.getFirstDateWithParameterValue(DataMatrix.TM);
         Date endTime = this.dataMatrix.getLastDateWithParameterValue(DataMatrix.TM);
-        
+        /*
+        System.out.println("Last temp=" + this.dataMatrix.getLastDateWithParameterValue(DataMatrix.TM));
+        System.out.println("Last RH=" + this.dataMatrix.getLastDateWithParameterValue(DataMatrix.UM));
+        System.out.println("Last rain=" + this.dataMatrix.getLastDateWithParameterValue(DataMatrix.RR));
+        */
         Calendar cal = Calendar.getInstance(this.timeZone);
         
         Integer contributionACounter = 0;
