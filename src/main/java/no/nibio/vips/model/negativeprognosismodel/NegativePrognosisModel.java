@@ -148,19 +148,19 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
         return "\n" +
             "Copyright (c) 2016 NIBIO <http://www.nibio.no/>. \n" +
             "\n" +
-            "This file is part of NegFryModel.\n" +
-            "NegFryModel is free software: you can redistribute it and/or modify\n" +
+            "This file is part of NegativePrognosisModel.\n" +
+            "NegativePrognosisModel is free software: you can redistribute it and/or modify\n" +
             "it under the terms of the NIBIO Open Source License as published by \n" +
             "NIBIO, either version 1 of the License, or (at your option) any\n" +
             "later version.\n" +
             "\n" +
-            "NegFryModel is distributed in the hope that it will be useful,\n" +
+            "NegativePrognosisModel is distributed in the hope that it will be useful,\n" +
             "but WITHOUT ANY WARRANTY; without even the implied warranty of\n" +
             "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n" +
             "NIBIO Open Source License for more details.\n" +
             "\n" +
             "You should have received a copy of the NIBIO Open Source License\n" +
-            "along with NegFryModel.  If not, see <http://www.nibio.no/licenses/>.";
+            "along with NegativePrognosisModel.  If not, see <http://www.nibio.no/licenses/>.";
     }
 
     @Override
