@@ -92,7 +92,7 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
         while(currentDate.compareTo(lastDate) <= 0)
         {
             Result result = new ResultImpl();
-            result.setResultValidTime(currentDate);
+            result.setValidTimeStart(currentDate);
             // Set model params
             
             result.setValue(this.getModelId().toString(), DataMatrix.DAILY_CONTRIB_A, this.dataMatrix.getDefaultFormattedValueForDate(currentDate, DataMatrix.DAILY_CONTRIB_A));
