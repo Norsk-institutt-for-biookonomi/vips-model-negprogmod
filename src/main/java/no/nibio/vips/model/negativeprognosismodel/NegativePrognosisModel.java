@@ -63,7 +63,13 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
     
     // Other model thresholds
     // When we go from green to yellow or red status
+    // Green to yellow
+    private final Double INFECTION_THRESHOLD_LOW = 120.0;
+    // Yellow to red
     private final Double INFECTION_THRESHOLD = 150.0;
+    // Red to grey
+    private final Double INFECTION_THRESHOLD_HIGH = 200.0;
+    
     // When daily contribution exeeds this (after total INFECTION_THRESHOLD has 
     // been exceeded), daily status is red, yellow otherwise
     private final Double INFECTION_DAILY_CONTRIBUTION_THRESHOLD = 7.0;
@@ -105,8 +111,13 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
             // Deciding warning status
             Double aggregatedContribution = this.dataMatrix.getParamDoubleValueForDate(currentDate, DataMatrix.AGGREGATED_CONTRIB);
             Double dailyContribution = this.dataMatrix.getParamDoubleValueForDate(currentDate, DataMatrix.DAILY_CONTRIB);
-            Integer warningStatus = 2;
+            Integer warningStatus = aggregatedContribution < this.INFECTION_THRESHOLD_LOW ? 2
+                    : aggregatedContribution < this.INFECTION_THRESHOLD ? 3
+                    : aggregatedContribution < this.INFECTION_THRESHOLD_HIGH ? 4
+                    : 0;
             // If aggregated contribution < INFECTION_THRESHOLD: NO RISK
+            
+            /*
             if(aggregatedContribution >= this.INFECTION_THRESHOLD)
             {
                 // If aggregated contribution >= INFECTION_THRESHOLD and daily contribution <= INFECTION_DAILY_CONTRIBUTION_THRESHOLD: MEDIUM RISK
@@ -117,7 +128,7 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
                     warningStatus = 4;
                 }
                 
-            }
+            }*/
             result.setWarningStatus(warningStatus);
             retVal.add(result);
             // Moving on
