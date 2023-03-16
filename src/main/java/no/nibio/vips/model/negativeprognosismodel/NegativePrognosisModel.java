@@ -245,7 +245,7 @@ public class NegativePrognosisModel extends I18nImpl implements Model{
         // Setting timezone
         this.timeZone = TimeZone.getTimeZone((String) config.getConfigParameter("timeZone"));
         // Getting weather data
-        List<WeatherObservation> observations = mapper.convertValue(config.getConfigParameter("observations"), new TypeReference<List<WeatherObservation>>(){});
+        List<WeatherObservation> observations = modelUtil.extractWeatherObservationList(config.getConfigParameter("observations"));
         for(WeatherObservation o:observations)
         {
             this.dataMatrix.setParamDoubleValueForDate(o.getTimeMeasured(), o.getElementMeasurementTypeId(), o.getValue());
