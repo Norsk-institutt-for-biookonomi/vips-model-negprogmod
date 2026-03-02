@@ -1,6 +1,6 @@
 # NegativePrognosisModel
 
-<p>From a specific date (50% germination), daily risk values are accumulated based on weather data (temperature, relative humidity and precipitation). The risk is an accumulated value of how the weather affects late blight germination/infection, sporulation and growth. Alle processes are corrected for inhibition due to drying. After the accumulated risk has reached a certain limit (150), there will be an infection risk if there is one day with high infection risk. This model is together with time of row closure, used to decide the timing of first spray against potato late blight.</p>
+<p>From a specific date (50% germination), daily risk values are accumulated based on weather data (temperature, relative humidity and precipitation). The risk is an accumulated value of how the weather affects late blight germination/infection, sporulation and growth. All processes are corrected for inhibition due to drying. After the accumulated risk has reached a certain limit (150), there will be an infection risk if there is one day with high infection risk. This model is together with time of row closure, used to decide the timing of first spray against potato late blight.</p>
 <h4>First spray</h4>
 <p>There is normally no need for spraying against potato late blight before row closure. Long lasting, favourable weather conditions in areas with early production, in combination with high levels of primary inoculum, can make it necessary to spray earlier. If the accumulated risk based on the negative prognosis model reaches 150 before row closure, first spray should be applied at the next infection period. In years with long periods with wet soil early in the season can also lead to early risk of infection.</p>
 <p>When accumulated risk &lt; 150, warning symbol is green</p>
@@ -12,7 +12,7 @@
 <h4>References</h4>
 <p>Ullrich J. &amp; H. Schr&ouml;dter 1966. Das Problem der Vorhersage des Auftretens der Kartoffel krautf&auml;ule (Phytophthora infestans) und die M&ouml;glichkeit seiner L&ouml;sung durch eine &ldquo;Negativprognose&rdquo;. Nachrichtenblatt Deutsch. Pflanzenschutzdienst (Braunschweig) 18, 33-40</p>
 
-### Development
+## Development
 
 Clone Gitlab repository
 
@@ -20,3 +20,11 @@ Clone Gitlab repository
 $ git clone https://gitlab.nibio.no/VIPS/models/java/Model_NEGPROGMOD.git
 $ cd Model_NEGPROGMOD
 ```
+
+### Compile, run tests
+```bash
+mvn clean install
+```
+
+### Deploy to VIPSCore
+See [the VIPSCore README](https://gitlab.nibio.no/VIPS/VIPSCore)
